@@ -4,6 +4,7 @@ Clone project
 - git flow init
 
 init install and run
+
 yarn install && ( cd ios && pod install )
 # Start in the iOS Simulator
 npx react-native run-ios --simulator="iPhone 11"
