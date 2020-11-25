@@ -1,4 +1,5 @@
-import boot from './src/boot/index';
+// @flow
+import boot from "./src/boot/index";
 
 const app = boot();
 
