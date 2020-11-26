@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {View, Text} from 'react-native';
 import {Header, Container, Right, Left, Button, Body, Title, Tabs, Tab, ScrollableTab} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
-class RealEstateNews extends Component {
+class RealEstateConsultant extends Component {
 	
     render() {
         const {props, categoryList} = this.props
@@ -20,7 +20,7 @@ class RealEstateNews extends Component {
                         </Button>
                     </Left>
                     <View style={{justifyContent: 'center'}}>
-                        <Title>Tin tức</Title>
+                        <Title>Thông tin nhà tư vấn bất động sản</Title>
                     </View>
                     <Right />
                 </Header>
@@ -35,4 +35,4 @@ class RealEstateNews extends Component {
     }
 }
 
-export default RealEstateNews;
+export default RealEstateConsultant;

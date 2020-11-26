@@ -1,8 +1,8 @@
 // @flow
 import React, {Component} from "react";
-import RealEstateNews from '../../stories/screens/RealEstateNews/RealEstateNews';
 import {baseApiUrl} from '../../config/baseApiUrl';
-class RealEstateNewsContainer extends Component {
+import RealEstateConsultant from '../../stories/screens/RealEstateConsultant/RealEstateConsultant';
+class RealEstateConsultantContainer extends Component {
 	constructor(props) {
         super(props);
         this.state = {
@@ -12,12 +12,12 @@ class RealEstateNewsContainer extends Component {
 
     // get all category for Real estate information
     getCategory = async () => {
-        const urlRequest = baseApiUrl + 'news/GetNews?LanguageId=1&PageSize=9999';
+        const urlRequest = baseApiUrl + 'member/GetBroker?LanguageId=1&CatMemberTypeId=1&PageSize=9999';
         const response = await fetch(urlRequest, {
             method: 'GET',
         });
         const responseJson = await response.json();
-        console.log('real estate info: ', responseJson);
+        console.log('real estate consultant: ', responseJson);
         this.setState({categoryList: responseJson});
     }
 
@@ -35,9 +35,9 @@ class RealEstateNewsContainer extends Component {
     render() {
         const {categoryList} = this.state;
         return(
-            <RealEstateNews categoryList={categoryList} props={this.props} />
+            <RealEstateConsultant categoryList={categoryList} props={this.props} />
         )
     }
 }
 
-export default RealEstateNewsContainer;
+export default RealEstateConsultantContainer;

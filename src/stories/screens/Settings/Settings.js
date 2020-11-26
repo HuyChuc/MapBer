@@ -3,7 +3,8 @@ import React, {Component} from "react";
 import {View, Text} from 'react-native';
 import {Header, Container, Right, Left, Button, Body, Title, Tabs, Tab, ScrollableTab} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
-class RealEstateNews extends Component {
+import i18n from '../../../utils/i18n';
+class Settings extends Component {
 	
     render() {
         const {props, categoryList} = this.props
@@ -20,7 +21,7 @@ class RealEstateNews extends Component {
                         </Button>
                     </Left>
                     <View style={{justifyContent: 'center'}}>
-                        <Title>Tin tức</Title>
+                        <Title>{i18n.t('Settings')}</Title>
                     </View>
                     <Right />
                 </Header>
@@ -35,4 +36,4 @@ class RealEstateNews extends Component {
     }
 }
 
-export default RealEstateNews;
+export default Settings;

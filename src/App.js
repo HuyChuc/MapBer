@@ -10,7 +10,11 @@ import BlankPage from "./container/BlankPageContainer";
 import RealEstateInformationContainer from './container/RealEstateInformationContainer';
 import RealEstateProjectContainer from './container/RealEstateProjectContainer';
 import RealEstateNewsContainer from './container/RealEstateNewsContainer';
+import RealEstateConsultantContainer from './container/RealEstateConsultantContainer';
+import SettingsContainer from './container/SettingsContainer';
 import Sidebar from "./container/SidebarContainer";
+import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
+
 
 const Drawer = createDrawerNavigator(
 	{
@@ -18,8 +22,21 @@ const Drawer = createDrawerNavigator(
 	},
 	{
 		initialRouteName: "Home",
-		contentComponent: props => <Sidebar {...props} />,
+		contentComponent: props => <Sidebar {...props} />
 	}
+);
+
+const TabBarComponent = (props) => <BottomTabBar {...props} />;
+
+const TabScreens = createBottomTabNavigator(
+  {
+    // other screens
+  },
+  {
+    tabBarComponent: (props) => (
+      <TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
+    ),
+  }
 );
 
 const AppLogin = createStackNavigator(
@@ -29,7 +46,10 @@ const AppLogin = createStackNavigator(
 		RealEstateInformation: { screen: RealEstateInformationContainer },
 		RealEstateProject: { screen: RealEstateProjectContainer },
 		RealEstateNews: { screen: RealEstateNewsContainer },
+		RealEstateConsultant: { screen: RealEstateConsultantContainer },
+		Settings: { screen: SettingsContainer },
 		Drawer: { screen: Drawer },
+		TabScreens: {screen: TabScreens}
 	},
 	{
 		initialRouteName: "Drawer",

@@ -1,12 +1,13 @@
 // @flow
 import React, {Component} from "react";
 import {View, Text} from 'react-native';
-import {Header, Container, Right, Left, Button, Body, Title} from 'native-base';
+import {Header, Container, Right, Left, Button, Body, Title, Tabs, Tab, ScrollableTab} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons'
+import RealEstateProjectByType from './RealEstateProjectByType/RealEstateProjectByType'
 class RealEstateProject extends Component {
 	
     render() {
-        const {props} = this.props
+        const {props, categoryList} = this.props
         return(
             <Container>
                 <Header>
@@ -20,13 +21,19 @@ class RealEstateProject extends Component {
                         </Button>
                     </Left>
                     <View style={{justifyContent: 'center'}}>
-                        <Title>Dự án</Title>
+                        <Title>Thông tin dự án</Title>
                     </View>
                     <Right />
                 </Header>
-                <View>
-                    <Text>Dự án</Text>
-                </View>
+                <Tabs renderTabBar={()=> <ScrollableTab />}>
+                    {categoryList.map(item => {
+                        return (
+                            <Tab key={item.id} heading={item.name}>
+                                <RealEstateProjectByType />
+                            </Tab>
+                        )
+                    })}
+                </Tabs>
             </Container>
             
         )
