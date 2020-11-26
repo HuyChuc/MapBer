@@ -7,6 +7,9 @@ import { Root } from "native-base";
 import Login from "./container/LoginContainer";
 import Home from "./container/HomeContainer";
 import BlankPage from "./container/BlankPageContainer";
+import RealEstateInformationContainer from './container/RealEstateInformationContainer';
+import RealEstateProjectContainer from './container/RealEstateProjectContainer';
+import RealEstateNewsContainer from './container/RealEstateNewsContainer';
 import Sidebar from "./container/SidebarContainer";
 
 const Drawer = createDrawerNavigator(
@@ -23,10 +26,13 @@ const AppLogin = createStackNavigator(
 	{
 		Login: { screen: Login },
 		BlankPage: { screen: BlankPage },
+		RealEstateInformation: { screen: RealEstateInformationContainer },
+		RealEstateProject: { screen: RealEstateProjectContainer },
+		RealEstateNews: { screen: RealEstateNewsContainer },
 		Drawer: { screen: Drawer },
 	},
 	{
-		initialRouteName: "Login",
+		initialRouteName: "Drawer",
 		headerMode: "none",
 	}
 );

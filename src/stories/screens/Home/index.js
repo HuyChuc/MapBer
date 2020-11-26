@@ -4,15 +4,13 @@ import {
   Header,
   Title,
   Content,
-  Text,
   Button,
   Icon,
   Left,
   Body,
   Right,
-  List,
-  ListItem
 } from "native-base";
+import {Text} from 'react-native';
 
 import styles from "./styles";
 export interface Props {
@@ -35,24 +33,12 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Left>
           <Body>
-            <Title>Home</Title>
+            <Title>Trang chủ</Title>
           </Body>
           <Right />
         </Header>
         <Content>
-          <List>
-            {this.props.list.map((item, i) => (
-              <ListItem
-                key={i}
-                onPress={() =>
-                  this.props.navigation.navigate("BlankPage", {
-                    name: { item }
-                  })}
-              >
-                <Text>{item}</Text>
-              </ListItem>
-            ))}
-          </List>
+          <Text>Trang chủ</Text>
         </Content>
       </Container>
     );
