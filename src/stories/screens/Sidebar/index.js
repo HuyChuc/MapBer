@@ -8,7 +8,7 @@ import styles from './styles';
 const routes = [
 	{
 		route: "RealEstateInformation",
-		caption: i18n.t('realestate_infor'),
+		caption: i18n.t('real_estate_info'),
 	},
 	{
 		route: "RealEstateProject",
