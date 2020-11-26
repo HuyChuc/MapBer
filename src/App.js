@@ -10,6 +10,7 @@ import BlankPage from "./container/BlankPageContainer";
 import RealEstateInformationContainer from './container/RealEstateInformationContainer';
 import RealEstateProjectContainer from './container/RealEstateProjectContainer';
 import RealEstateNewsContainer from './container/RealEstateNewsContainer';
+import RealEstateConsultantContainer from './container/RealEstateConsultantContainer';
 import Sidebar from "./container/SidebarContainer";
 
 const Drawer = createDrawerNavigator(
@@ -18,7 +19,7 @@ const Drawer = createDrawerNavigator(
 	},
 	{
 		initialRouteName: "Home",
-		contentComponent: props => <Sidebar {...props} />,
+		contentComponent: props => <Sidebar {...props} />
 	}
 );
 
@@ -29,7 +30,8 @@ const AppLogin = createStackNavigator(
 		RealEstateInformation: { screen: RealEstateInformationContainer },
 		RealEstateProject: { screen: RealEstateProjectContainer },
 		RealEstateNews: { screen: RealEstateNewsContainer },
-		Drawer: { screen: Drawer },
+		RealEstateConsultant: { screen: RealEstateConsultantContainer },
+		Drawer: { screen: Drawer }
 	},
 	{
 		initialRouteName: "Drawer",

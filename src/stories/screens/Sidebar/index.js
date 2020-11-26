@@ -8,15 +8,23 @@ import styles from './styles';
 const routes = [
 	{
 		route: "RealEstateInformation",
-		caption: i18n.t('reale_estate_infor'),
+		caption: i18n.t('reale_state_infor'),
 	},
 	{
 		route: "RealEstateProject",
-		caption: i18n.t('reale_estate_project'),
+		caption: i18n.t('reale_state_project'),
+	},
+	{
+		route: "RealEstateConsultant",
+		caption: i18n.t('reale_state_consultant'),
 	},
 	{
 		route: "RealEstateNews",
-		caption: i18n.t('reale_estate_news'),
+		caption: i18n.t('reale_state_news'),
+	},
+	{
+		route: "RealEstateNews",
+		caption: i18n.t('reale_state_news'),
 	},
 ];
 const defaultAvatar = require('../../../../assets/contact-icon.png');

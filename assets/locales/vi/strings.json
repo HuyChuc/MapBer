@@ -1,8 +1,9 @@
 {
     "home": "Trang chủ",
-    "reale_estate_infor": "Thông tin bất động sản",
-    "reale_estate_project": "Dự án",
-    "reale_estate_news": "Tin tức",
+    "reale_state_infor": "Thông tin bất động sản",
+    "reale_state_project": "Dự án",
+    "reale_state_news": "Tin tức",
+    "reale_state_consultant" :"Nhà môi giới",
     "logout": "Đăng xuất",
     "vietnamese": "Tiếng Việt",
     "english": "Tiếng Anh",
