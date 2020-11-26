@@ -7,7 +7,7 @@ import RealEstateInforByType from './RealEstateInforByType/RealEstateInforByType
 class RealEstateInformation extends Component {
 	
     render() {
-        const {parent, categoryList, getListProperty, propertyList, reloadComponent} = this.props
+        const {parent, categoryList, getListProperty, propertyList, reloadComponent, loading, handleChildState} = this.props
         return(
             <Container>
                 <Header>
@@ -32,6 +32,8 @@ class RealEstateInformation extends Component {
                                 <RealEstateInforByType
                                     getListProperty={getListProperty}
                                     propertyType={item.id}
+                                    handleChildState={handleChildState}
+                                    loading={loading}
                                     propertyList={propertyList}
                                     reloadComponent={reloadComponent}
                                 />

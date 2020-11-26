@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from "react";
-import {View, Text, FlatList, Image} from 'react-native';
+import {View, Text, FlatList, Image, ActivityIndicator} from 'react-native';
 import {Header, Container, Right, Left, Button, Body, Title} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons'
 import styles from './styles';
@@ -18,22 +18,14 @@ class RealEstateInforByType extends Component {
     
     // truyền pagSize, pageIndex, propertyType vào hàm getListProperty được define ở RealEstateInformationContainer
     componentDidMount() {
-        const {propertyType, getListProperty, reloadComponent} = this.props
+        const {propertyType, getListProperty, reloadComponent, handleChildState} = this.props
+        console.log('property typeasdasd: ', propertyType);
         const {pageSize, pageIndex} = this.state;
         this._mounted = true;
         if (this._mounted) {
-            getListProperty(pageSize, pageIndex, propertyType);
             reloadComponent(propertyType);
+            handleChildState(propertyType);
         }
-    }
-
-    // hàm này sẽ chạy khi người dùng kéo list BDS đến hết màn hình
-    handleEnd = () => {
-        console.log('hanlde end');
-        const {pageIndex, pageSize} = this.state;
-        const {propertyType, getListProperty} = this.props
-        this.setState({pageIndex: pageIndex + 1, pageSize: pageSize + 10});
-        getListProperty(pageSize, pageIndex, propertyType);
     }
 
     componentWillUnmount() {
@@ -51,24 +43,39 @@ class RealEstateInforByType extends Component {
                 </View>
                 <View style={styles.rightContent}>
                     <Text>{item.title}</Text>
+                    <View style={styles.infoContainer}>
+                        <Text style={styles.labelText}>Giá: </Text>
+                        <Text style={styles.valueText}>Liên hệ</Text>
+                    </View>
+                    <View style={styles.infoContainer}>
+                        <Text style={styles.labelText}>Diện tích: </Text>
+                        <Text style={styles.valueText}>{item.width * item.length} (m2)</Text>
+                    </View>
                 </View>
             </View>
         )
     }
 
     render() {
-        const {propertyList} = this.props
-        return(
-            <View style={styles.flatlistContainer}>
-                <FlatList
-                 data={propertyList}
-                 keyExtractor={item => item.id}
-                 renderItem={this.renderItem}
-                 onEndReached={this.handleEnd}
-                 onEndReachedThreshold={0.01}
-                />
-            </View>
-        )
+        const {propertyList, propertyType, loading} = this.props
+        if (loading) {
+            return (
+                <View style={styles.flatlistContainer}>
+                    <ActivityIndicator size="large" />
+                </View>
+            )
+        }
+        else {
+            return(
+                <View style={styles.flatlistContainer}>
+                    <FlatList
+                     data={propertyList}
+                     keyExtractor={item => item.id}
+                     renderItem={this.renderItem}
+                    />
+                </View>
+            )
+        }
     }
 }
 

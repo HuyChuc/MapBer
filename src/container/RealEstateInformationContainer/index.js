@@ -7,7 +7,11 @@ class RealEstateInformationContainer extends Component {
         super(props);
         this.state = {
             categoryList: [],
-            propertyList: []
+            propertyList: [],
+            loading: true,
+            propertyType: '',
+            pageSize: 10,
+            pageIndex: 0,
         }
     }
 
@@ -25,24 +29,26 @@ class RealEstateInformationContainer extends Component {
     // get danh sách BDS theo loại BDS (type)
     // truyền function này sang RealEstateInformation -> RealEstateInforByType
     // để thực hiện lấy list property theo type
-    getListProperty = async (pageSize, pageIndex, propertyType) => {
-        console.log('page size: ', pageSize);
-        console.log('page index: ', pageIndex);
-        console.log('propertyType: ', propertyType);
-        console.log('property type getListProperty: ', propertyType);
-        const {propertyList} = this.state;
+    getListProperty = async () => {
+        console.log('propertyType: ', this.state.propertyType);
+        const {pageIndex, pageSize, propertyType} = this.state;
         const urlRequest = baseApiUrl + 'realstates/GetRealEstates?LanguageId=1&PageSize=' + encodeURIComponent(pageSize) + '&PageIndex=' + encodeURIComponent(pageIndex) + '&RealEstateTypeId=' + encodeURIComponent(propertyType);
         const response = await fetch(urlRequest, {
             method: 'GET',
         });
         const responseJson = await response.json();
         console.log('propertyList: ', responseJson);
-        this.setState({propertyList: [...propertyList, ...responseJson]});
+        this.setState({propertyList: responseJson, loading: false});
+    }
+
+    handleChildState = (propertyType) => {
+        this.setState({propertyType: propertyType}, this.getListProperty);
     }
 
     // reload lại component khi chọn sang loại bất động sản khác, ví dụ: Dự án, nhà đất, đất nền,....
     reloadComponent = (propertyType) => {
-        this.setState({propertyList: []}, () => this.getListProperty(10, 0, propertyType))
+        this.setState({propertyList: []});
+        this.getListProperty(10, 0, propertyType);
     }
 
     componentDidMount() {
@@ -57,13 +63,15 @@ class RealEstateInformationContainer extends Component {
     }
 
     render() {
-        const {categoryList, propertyList} = this.state;
+        const {categoryList, propertyList, loading} = this.state;
         return(
             <RealEstateInformation
                 getListProperty={this.getListProperty}
                 categoryList={categoryList}
                 propertyList={propertyList}
                 reloadComponent={this.reloadComponent}
+                handleChildState={this.handleChildState}
+                loading={loading}
                 parent={this}
             />
         )
