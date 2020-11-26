@@ -7,7 +7,7 @@ import RealEstateInforByType from './RealEstateInforByType/RealEstateInforByType
 class RealEstateInformation extends Component {
 	
     render() {
-        const {props, categoryList} = this.props
+        const {parent, categoryList, getListProperty, propertyList, reloadComponent} = this.props
         return(
             <Container>
                 <Header>
@@ -16,7 +16,7 @@ class RealEstateInformation extends Component {
                         <Icon
                             name="chevron-back"
                             size={30}
-                            onPress={() => props.navigation.goBack()}
+                            onPress={() => parent.props.navigation.goBack()}
                         />
                         </Button>
                     </Left>
@@ -29,7 +29,12 @@ class RealEstateInformation extends Component {
                     {categoryList.map(item => {
                         return (
                             <Tab key={item.id} heading={item.name}>
-                                <RealEstateInforByType />
+                                <RealEstateInforByType
+                                    getListProperty={getListProperty}
+                                    propertyType={item.id}
+                                    propertyList={propertyList}
+                                    reloadComponent={reloadComponent}
+                                />
                             </Tab>
                         )
                     })}
