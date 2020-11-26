@@ -51,6 +51,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  segmentContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  segmentStyles: {
+    bottom: 60
+  },
+  segmentText: {
+    color: '#fff'
   }
 });
 

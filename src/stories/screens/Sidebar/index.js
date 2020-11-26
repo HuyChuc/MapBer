@@ -3,19 +3,20 @@ import { Container, List, ListItem, Content, Button, Segment } from "native-base
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { NavigationActions, StackActions } from "react-navigation";
 import Icon from 'react-native-vector-icons/AntDesign';
+import i18n from '../../../utils/i18n';
 import styles from './styles';
 const routes = [
 	{
 		route: "RealEstateInformation",
-		caption: "Thông tin bất động sản",
+		caption: i18n.t('realestate_infor'),
 	},
 	{
 		route: "RealEstateProject",
-		caption: "Dự án",
+		caption: i18n.t('realestate_project'),
 	},
 	{
 		route: "RealEstateNews",
-		caption: "Tin tức",
+		caption: i18n.t('realestate_news'),
 	},
 ];
 const defaultAvatar = require('../../../../assets/contact-icon.png');
@@ -53,21 +54,21 @@ export default class Sidebar extends React.Component<Props, State> {
 							);
 						}}
 					/>
-					<Segment style={{position: 'absolute', bottom: 50}}>
-						<Button first>
-							<Text>Puppies</Text>
-						</Button>
-						<Button active>
-							<Text>Kittens</Text>
-						</Button>
-						<Button last>
-							<Text>Cubs</Text>
-						</Button>
-					</Segment>
+					<View style={styles.segmentContainer}>
+						<Segment style={styles.segmentStyles}>
+							<Button first active>
+								<Text style={styles.segmentText}>{i18n.t('english')}</Text>
+							</Button>
+							<Button>
+								<Text>{i18n.t('vietnamese')}</Text>
+							</Button>
+						</Segment>
+					</View>
+					
 					<TouchableOpacity style={styles.logoutContainer}>
 						<Icon name='logout' size={30} />
 						<View style={styles.buttonLogoutStyle}>
-							<Text>Đăng xuất</Text>
+							<Text>{i18n.t('logout')}</Text>
 						</View>
 					</TouchableOpacity>
 				</Content>

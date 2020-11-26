@@ -11,6 +11,7 @@ import {
   Right,
 } from "native-base";
 import {Text} from 'react-native';
+import i18n from '../../../utils/i18n';
 
 import styles from "./styles";
 export interface Props {
@@ -33,7 +34,7 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Left>
           <Body>
-            <Title>Trang chủ</Title>
+            <Title>{i18n.t('home')}</Title>
           </Body>
           <Right />
         </Header>
