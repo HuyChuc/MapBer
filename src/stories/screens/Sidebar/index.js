@@ -8,15 +8,15 @@ import styles from './styles';
 const routes = [
 	{
 		route: "RealEstateInformation",
-		caption: i18n.t('realestate_infor'),
+		caption: i18n.t('reale_estate_infor'),
 	},
 	{
 		route: "RealEstateProject",
-		caption: i18n.t('realestate_project'),
+		caption: i18n.t('reale_estate_project'),
 	},
 	{
 		route: "RealEstateNews",
-		caption: i18n.t('realestate_news'),
+		caption: i18n.t('reale_estate_news'),
 	},
 ];
 const defaultAvatar = require('../../../../assets/contact-icon.png');
