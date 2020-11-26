@@ -23,9 +23,9 @@ const routes = [
 		caption: i18n.t('reale_state_news'),
 	},
 	{
-		route: "RealEstateNews",
-		caption: i18n.t('reale_state_news'),
-	},
+		route: "Settings",
+		caption: i18n.t('Settings'),
+	}
 ];
 const defaultAvatar = require('../../../../assets/contact-icon.png');
 export interface Props {

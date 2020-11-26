@@ -11,6 +11,7 @@ import RealEstateInformationContainer from './container/RealEstateInformationCon
 import RealEstateProjectContainer from './container/RealEstateProjectContainer';
 import RealEstateNewsContainer from './container/RealEstateNewsContainer';
 import RealEstateConsultantContainer from './container/RealEstateConsultantContainer';
+import SettingsContainer from './container/SettingsContainer';
 import Sidebar from "./container/SidebarContainer";
 
 const Drawer = createDrawerNavigator(
@@ -31,6 +32,7 @@ const AppLogin = createStackNavigator(
 		RealEstateProject: { screen: RealEstateProjectContainer },
 		RealEstateNews: { screen: RealEstateNewsContainer },
 		RealEstateConsultant: { screen: RealEstateConsultantContainer },
+		Settings: { screen: SettingsContainer },
 		Drawer: { screen: Drawer }
 	},
 	{
