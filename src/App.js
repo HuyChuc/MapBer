@@ -13,6 +13,8 @@ import RealEstateNewsContainer from './container/RealEstateNewsContainer';
 import RealEstateConsultantContainer from './container/RealEstateConsultantContainer';
 import SettingsContainer from './container/SettingsContainer';
 import Sidebar from "./container/SidebarContainer";
+import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
+
 
 const Drawer = createDrawerNavigator(
 	{
@@ -24,6 +26,19 @@ const Drawer = createDrawerNavigator(
 	}
 );
 
+const TabBarComponent = (props) => <BottomTabBar {...props} />;
+
+const TabScreens = createBottomTabNavigator(
+  {
+    // other screens
+  },
+  {
+    tabBarComponent: (props) => (
+      <TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
+    ),
+  }
+);
+
 const AppLogin = createStackNavigator(
 	{
 		Login: { screen: Login },
@@ -33,7 +48,8 @@ const AppLogin = createStackNavigator(
 		RealEstateNews: { screen: RealEstateNewsContainer },
 		RealEstateConsultant: { screen: RealEstateConsultantContainer },
 		Settings: { screen: SettingsContainer },
-		Drawer: { screen: Drawer }
+		Drawer: { screen: Drawer },
+		TabScreens: {screen: TabScreens}
 	},
 	{
 		initialRouteName: "Drawer",
