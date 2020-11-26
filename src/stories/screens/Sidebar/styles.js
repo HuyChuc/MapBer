@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   logoutContainer: {
     width: '100%',
     position: 'absolute',
-    bottom: 20,
+    bottom: 5,
     paddingLeft: 10,
     flexDirection: 'row',
     alignItems: 'center',

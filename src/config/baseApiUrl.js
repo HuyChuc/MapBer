@@ -1,0 +1,1 @@
+export const baseApiUrl = 'http://mapber.com:51800/api/';

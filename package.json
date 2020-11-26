@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@react-native-community/toolbar-android": "0.1.0-rc.2",
+    "i18next": "^19.8.4",
     "lodash": "^4.17.15",
     "native-base": "^2.13.8",
     "react": "16.11.0",
+    "react-i18next": "^9.0.10",
     "react-native": "0.62.0-rc.0",
+    "react-native-device-info": "^7.1.0",
     "react-native-gesture-handler": "^1.5.2",
     "react-native-reanimated": "^1.4.0",
     "react-native-screens": "^2.15.0",

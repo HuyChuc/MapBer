@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container, List, ListItem, Content, Button } from "native-base";
+import { Container, List, ListItem, Content, Button, Segment } from "native-base";
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { NavigationActions, StackActions } from "react-navigation";
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -53,12 +53,23 @@ export default class Sidebar extends React.Component<Props, State> {
 							);
 						}}
 					/>
-					<View style={styles.logoutContainer}>
+					<Segment style={{position: 'absolute', bottom: 50}}>
+						<Button first>
+							<Text>Puppies</Text>
+						</Button>
+						<Button active>
+							<Text>Kittens</Text>
+						</Button>
+						<Button last>
+							<Text>Cubs</Text>
+						</Button>
+					</Segment>
+					<TouchableOpacity style={styles.logoutContainer}>
 						<Icon name='logout' size={30} />
-						<TouchableOpacity style={styles.buttonLogoutStyle}>
+						<View style={styles.buttonLogoutStyle}>
 							<Text>Đăng xuất</Text>
-						</TouchableOpacity>
-					</View>
+						</View>
+					</TouchableOpacity>
 				</Content>
 			</Container>
 		);
