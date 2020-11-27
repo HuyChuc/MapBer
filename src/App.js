@@ -28,16 +28,18 @@ const Drawer = createDrawerNavigator(
 
 const TabBarComponent = (props) => <BottomTabBar {...props} />;
 
-const TabScreens = createBottomTabNavigator(
-  {
-    // other screens
-  },
-  {
-    tabBarComponent: (props) => (
-      <TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
-    ),
-  }
-);
+// const TabScreens = createBottomTabNavigator(
+//   {
+//     'Route1': {
+// 		screen: AppLogin,
+// 	}
+//   },
+//   {
+//     tabBarComponent: (props) => (
+//       <TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
+//     ),
+//   }
+// );
 
 const AppLogin = createStackNavigator(
 	{
@@ -49,7 +51,7 @@ const AppLogin = createStackNavigator(
 		RealEstateConsultant: { screen: RealEstateConsultantContainer },
 		Settings: { screen: SettingsContainer },
 		Drawer: { screen: Drawer },
-		TabScreens: {screen: TabScreens}
+		// TabScreens: {screen: TabScreens}
 	},
 	{
 		initialRouteName: "Drawer",

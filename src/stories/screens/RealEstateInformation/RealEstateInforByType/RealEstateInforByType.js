@@ -4,6 +4,7 @@ import {View, Text, FlatList, Image, ActivityIndicator} from 'react-native';
 import {Header, Container, Right, Left, Button, Body, Title} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons'
 import styles from './styles';
+import {getListProperty} from '../api';
 
 const defaultImg = require('../../../../../assets/contact-icon.png');
 class RealEstateInforByType extends Component {
@@ -15,23 +16,18 @@ class RealEstateInforByType extends Component {
             pageIndex: 0
         }
     }
+
+    getListProps = () => {
+        const {pageIndex, pageSize} = this.state;
+        const {propertyTypeId} = this.props;
+        console.log('propertyTypeId: ', propertyTypeId);
+        getListProperty(pageSize, pageIndex, propertyTypeId)
+        .then(propertyList => {
+            console.log('propertyList: ', propertyList)
+            this.setState({propertyList})
+        })
+    }
     
-    // truyền pagSize, pageIndex, propertyType vào hàm getListProperty được define ở RealEstateInformationContainer
-    componentDidMount() {
-        const {propertyType, getListProperty, reloadComponent, handleChildState} = this.props
-        console.log('property typeasdasd: ', propertyType);
-        const {pageSize, pageIndex} = this.state;
-        this._mounted = true;
-        if (this._mounted) {
-            reloadComponent(propertyType);
-            handleChildState(propertyType);
-        }
-    }
-
-    componentWillUnmount() {
-        this._mounted = false;
-    }
-
     renderItem = ({item, index}) => {
         return (
             <View style={styles.itemContainer}>
@@ -56,16 +52,27 @@ class RealEstateInforByType extends Component {
         )
     }
 
-    render() {
-        const {propertyList, propertyType, loading} = this.props
-        if (loading) {
-            return (
-                <View style={styles.flatlistContainer}>
-                    <ActivityIndicator size="large" />
-                </View>
-            )
+    componentDidMount() {
+        this._mounted = true;
+        if (this._mounted) {
+            this.getListProps();
         }
-        else {
+    }
+
+    componentWillUnmount() {
+        this._mounted = false;
+    }
+
+    render() {
+        const {propertyList} = this.state;
+        // if (loading) {
+        //     return (
+        //         <View style={styles.flatlistContainer}>
+        //             <ActivityIndicator size="large" />
+        //         </View>
+        //     )
+        // }
+        // else {
             return(
                 <View style={styles.flatlistContainer}>
                     <FlatList
@@ -75,7 +82,7 @@ class RealEstateInforByType extends Component {
                     />
                 </View>
             )
-        }
+        // }
     }
 }
 

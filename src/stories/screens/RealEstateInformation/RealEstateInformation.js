@@ -4,10 +4,38 @@ import {View, Text} from 'react-native';
 import {Header, Container, Right, Left, Button, Body, Title, Tabs, Tab, ScrollableTab} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons'
 import RealEstateInforByType from './RealEstateInforByType/RealEstateInforByType'
+import {getCategoryList} from './api';
 class RealEstateInformation extends Component {
-	
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            categoryList: [],
+        }
+    }
+
+    getCatList = () => {
+        getCategoryList()
+        .then(categoryList => {
+            console.log('cat list: ', categoryList);
+            this.setState({categoryList})
+        })
+    }
+
+    componentDidMount() {
+        this._mounted = true;
+        if (this._mounted) {
+            this.getCatList();
+        }
+    }
+
+    componentWillUnmount() {
+        this._mounted = false
+    }
+    
     render() {
-        const {parent, categoryList, getListProperty, propertyList, reloadComponent, loading, handleChildState} = this.props
+        const {categoryList} = this.state;
+        const {parent} = this.props;
         return(
             <Container>
                 <Header>
@@ -29,14 +57,7 @@ class RealEstateInformation extends Component {
                     {categoryList.map(item => {
                         return (
                             <Tab key={item.id} heading={item.name}>
-                                <RealEstateInforByType
-                                    getListProperty={getListProperty}
-                                    propertyType={item.id}
-                                    handleChildState={handleChildState}
-                                    loading={loading}
-                                    propertyList={propertyList}
-                                    reloadComponent={reloadComponent}
-                                />
+                                <RealEstateInforByType item={item} propertyTypeId={item.id}/>
                             </Tab>
                         )
                     })}
