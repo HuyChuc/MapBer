@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import RealEstateInforByType from './RealEstateInforByType/RealEstateInforByType'
 import {getCategoryList} from './api';
 class RealEstateInformation extends Component {
-    
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +16,6 @@ class RealEstateInformation extends Component {
     getCatList = () => {
         getCategoryList()
         .then(categoryList => {
-            console.log('cat list: ', categoryList);
             this.setState({categoryList})
         })
     }

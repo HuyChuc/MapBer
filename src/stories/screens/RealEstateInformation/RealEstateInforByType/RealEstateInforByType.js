@@ -23,7 +23,6 @@ class RealEstateInforByType extends Component {
         console.log('propertyTypeId: ', propertyTypeId);
         getListProperty(pageSize, pageIndex, propertyTypeId)
         .then(propertyList => {
-            console.log('propertyList: ', propertyList)
             this.setState({propertyList})
         })
     }
@@ -65,24 +64,15 @@ class RealEstateInforByType extends Component {
 
     render() {
         const {propertyList} = this.state;
-        // if (loading) {
-        //     return (
-        //         <View style={styles.flatlistContainer}>
-        //             <ActivityIndicator size="large" />
-        //         </View>
-        //     )
-        // }
-        // else {
-            return(
-                <View style={styles.flatlistContainer}>
-                    <FlatList
-                     data={propertyList}
-                     keyExtractor={item => item.id}
-                     renderItem={this.renderItem}
-                    />
-                </View>
-            )
-        // }
+        return(
+            <View style={styles.flatlistContainer}>
+                <FlatList
+                    data={propertyList}
+                    keyExtractor={item => item.id}
+                    renderItem={this.renderItem}
+                />
+            </View>
+        )
     }
 }
 
