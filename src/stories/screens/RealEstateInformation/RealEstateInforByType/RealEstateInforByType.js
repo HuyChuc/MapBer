@@ -41,14 +41,30 @@ class RealEstateInforByType extends Component {
                     }
                 </View>
                 <View style={styles.rightContent}>
-                    <Text>{item.title}</Text>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <View style={styles.infoContainer}>
+                        <Text style={styles.approveDate}>
+                            {Moment(item.approvE_DATE).format('MM/DD/YYYY')}
+                        </Text>
+                    </View>
                     <View style={styles.infoContainer}>
                         <Text style={styles.labelText}>Giá: </Text>
-                        <Text style={styles.valueText}>Liên hệ</Text>
+                        <Text>{item.price !== null ? item.price + ' ' + 
+                                                     item.caT_UNIT_DETAIL_NAME: 'Liên hệ'}</Text>
                     </View>
                     <View style={styles.infoContainer}>
                         <Text style={styles.labelText}>Diện tích: </Text>
                         <Text style={styles.valueText}>{item.width * item.length} (m2)</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.labelText}>Địa chỉ: </Text>
+                        <Text style={styles.valueText}>{item.address}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.labelText}>Quận huyện: </Text>
+                        <Text style={styles.valueText}>{item.caT_DISTRICT_NAME + ', ' +
+                            item.caT_CITY_NAME + ', ' +
+                            item.caT_COUNTRY_NAME}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
