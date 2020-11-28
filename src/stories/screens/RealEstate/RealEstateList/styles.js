@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     valueText: {
+        fontWeight: "normal",
         fontSize: 14
     },
     approveDate: {

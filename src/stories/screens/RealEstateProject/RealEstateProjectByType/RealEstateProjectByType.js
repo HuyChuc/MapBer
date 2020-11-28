@@ -50,22 +50,24 @@ class RealEstateProjectByType extends Component {
                     </View>
                     <View style={styles.infoContainer}>
                         <Text style={styles.labelText}>Giá: </Text>
-                        <Text>{item.price !== null ? item.price + ' ' + 
-                                                     item.caT_UNIT_DETAIL_NAME: 'Liên hệ'}</Text>
+                        <Text>{item.price !== null ? item.price + ' ' +
+                            item.caT_UNIT_DETAIL_NAME : 'Liên hệ'}</Text>
                     </View>
                     <View style={styles.infoContainer}>
                         <Text style={styles.labelText}>Diện tích: </Text>
                         <Text style={styles.valueText}>{item.width * item.length} (m2)</Text>
                     </View>
                     <View>
-                        <Text style={styles.labelText}>Địa chỉ: </Text>
+                        <Text style={styles.labelText}>Địa chỉ:
                         <Text style={styles.valueText}>{item.address}</Text>
+                        </Text>
                     </View>
                     <View>
-                        <Text style={styles.labelText}>Quận huyện: </Text>
+                        <Text style={styles.labelText}>Quận huyện:
                         <Text style={styles.valueText}>{item.caT_DISTRICT_NAME + ', ' +
-                            item.caT_CITY_NAME + ', ' +
-                            item.caT_COUNTRY_NAME}</Text>
+                                item.caT_CITY_NAME + ', ' +
+                                item.caT_COUNTRY_NAME}</Text>
+                        </Text>
                     </View>
                 </View>
             </TouchableOpacity>

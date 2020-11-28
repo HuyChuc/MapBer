@@ -54,14 +54,18 @@ class RealEstateList extends Component {
                         <Text style={styles.valueText}>{item.width * item.length} (m2)</Text>
                     </View>
                     <View>
-                        <Text style={styles.labelText}>Địa chỉ: </Text>
-                        <Text style={styles.valueText}>{item.address}</Text>
+                        <Text style={styles.labelText}>Địa chỉ: 
+                            <Text style={styles.valueText}>{item.address}</Text>
+                        </Text>
+                       
                     </View>
                     <View>
-                        <Text style={styles.labelText}>Quận huyện: </Text>
+                        <Text style={styles.labelText}>Quận huyện:
                         <Text style={styles.valueText}>{item.caT_DISTRICT_NAME + ', ' +
                             item.caT_CITY_NAME + ', ' +
                             item.caT_COUNTRY_NAME}</Text>
+                         </Text>
+                        
                     </View>
                 </View>
             </TouchableOpacity>

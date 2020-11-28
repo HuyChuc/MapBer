@@ -16,7 +16,7 @@ class RealEstateNewsDetail extends Component {
 
     getDetailInfor = () => {
         const { pid } = this.props.navigation.state.params;
-        // console.log(pid);
+        console.log(pid);
         getDetail(pid)
             .then(detail => {
                 console.log('detail: ', detail);
