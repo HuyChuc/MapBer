@@ -11,6 +11,7 @@ import RealEstateInformationContainer from './container/RealEstateInformationCon
 import RealEstateList from './stories/screens/RealEstate/RealEstateList/RealEstateList';
 import RealEstateDetail from './stories/screens/RealEstateInformation/RealEstateDetail/RealEstateDetail';
 import RealEstateProjectContainer from './container/RealEstateProjectContainer';
+import MyRealEstateView from './stories/screens/MyRealEstate/MyRealEstateView/MyRealEstateView';
 import RealEstateNewsContainer from './container/RealEstateNewsContainer';
 import RealEstateConsultantContainer from './container/RealEstateConsultantContainer';
 import SettingsContainer from './container/SettingsContainer';
@@ -50,13 +51,59 @@ const AppLogin = createStackNavigator(
 	}
 );
 
-const RealEstate = createStackNavigator(
+// drawer real estate
+const DrawerRealEstate = createDrawerNavigator(
 	{
-		RealEstateList: {screen: RealEstateList},
-		RealEstateDetail: { screen: RealEstateDetail }
+		RealEstateList: {screen: RealEstateList}
 	},
 	{
 		initialRouteName: 'RealEstateList',
+		contentComponent: props => <Sidebar {...props} />
+	}
+)
+
+const RealEstate = createStackNavigator(
+	{
+		DrawerRealEstate: {screen: DrawerRealEstate},
+		RealEstateDetail: { screen: RealEstateDetail },
+		RealEstateInformation: { screen: RealEstateInformationContainer },
+		RealEstateProject: { screen: RealEstateProjectContainer },
+		RealEstateNews: { screen: RealEstateNewsContainer },
+		RealEstateConsultant: { screen: RealEstateConsultantContainer },
+		Settings: { screen: SettingsContainer },
+	},
+	{
+		initialRouteName: 'DrawerRealEstate',
+		headerMode: 'none',
+		navigationOptions: {
+			header: null
+		}
+	}
+)
+
+// drawer my real estate
+const DrawerMyRealEstate = createDrawerNavigator(
+	{
+		MyRealEstateView: {screen: MyRealEstateView}
+	},
+	{
+		initialRouteName: 'MyRealEstateView',
+		contentComponent: props => <Sidebar {...props} />
+	}
+)
+
+const MyRealEstate = createStackNavigator(
+	{
+		DrawerMyRealEstate: {screen: DrawerMyRealEstate},
+		RealEstateDetail: { screen: RealEstateDetail },
+		RealEstateInformation: { screen: RealEstateInformationContainer },
+		RealEstateProject: { screen: RealEstateProjectContainer },
+		RealEstateNews: { screen: RealEstateNewsContainer },
+		RealEstateConsultant: { screen: RealEstateConsultantContainer },
+		Settings: { screen: SettingsContainer },
+	},
+	{
+		initialRouteName: 'DrawerMyRealEstate',
 		headerMode: 'none',
 		navigationOptions: {
 			header: null
@@ -122,7 +169,7 @@ const AppBottomTab = createBottomTabNavigator({
 		})
 	},
 	'Bất động sản của tôi': {
-		screen: Home,
+		screen: MyRealEstate,
 		navigationOptions:({navigation}) =>  ({
 			tabBarIcon: ({ focused, tintColor }) =>
 			getTabBarIcon(navigation, focused, tintColor),

@@ -60,7 +60,16 @@ class RealEstateList extends Component {
         return(
             <Container>
                 <Header>
-                    <Left/>
+                    <Left>
+                        <Button transparent>
+                            <Icon
+                                active
+                                size={30}
+                                name="menu"
+                                onPress={() => this.props.navigation.openDrawer()}
+                            />
+                        </Button>
+                    </Left>
                     <View style={{justifyContent: 'center'}}>
                         <Title>Thông tin bất động sản</Title>
                     </View>
