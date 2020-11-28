@@ -59,6 +59,18 @@ class RealEstateInforByType extends Component {
         this.getListProps();
     }
 
+    FlatListItemSeparator = () => {
+        return (
+          <View
+            style={{
+              height: 1,
+              width: "100%",
+              backgroundColor: "#000",
+            }}
+          />
+        );
+      }
+
     render() {
         const {propertyList} = this.state;
         return(
@@ -67,6 +79,7 @@ class RealEstateInforByType extends Component {
                     data={propertyList}
                     keyExtractor={item => item.id}
                     renderItem={this.renderItem}
+                    ItemSeparatorComponent={this.FlatListItemSeparator}
                 />
             </View>
         )

@@ -19,15 +19,14 @@ const styles = StyleSheet.create({
     },
     imgContent: {
         width: '100%',
-        height: 50,
+        height: 150,
         alignSelf: 'center'
     },
     infoContainer: {
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 10,
-        justifyContent: "space-around"
+        margin: 5
     },
     labelText: {
         fontWeight: '600',
@@ -35,6 +34,9 @@ const styles = StyleSheet.create({
     },
     valueText: {
         fontSize: 14
+    },
+    dest: {
+        paddingLeft: 10
     }
 })
 
