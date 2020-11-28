@@ -9,12 +9,15 @@ import {
   Left,
   Body,
   Right,
+  TextInput
 } from "native-base";
 import {View, Text,Animated,StyleSheet, TouchableOpacity,ScrollView} from 'react-native';
-import {i18nUtil} from '../../../utils/i18n';
+import i18n from '../../../utils/i18n';
 import styles from "./styles";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AnimatedDetail from './AnimatedDetail';
+import { map } from 'lodash';
+
 
 class Home extends Component {
   render() {
@@ -22,17 +25,18 @@ class Home extends Component {
       <Container style={styles.container}>
         <Header>
           <Left/>
+
           <Body>
-            <Title>{i18nUtil('vi').t('map')}</Title>
-            {/* <Title>{i18n.use()}</Title> */}
+            <Title>{i18n.t('home')}</Title>
           </Body>
           <Right />
         </Header>
           <View style={styles.container}>
-            {/* <MapView
+            <MapView
+              ref={map => this._map = map}
               provider={PROVIDER_GOOGLE} // remove if not using Google Maps
               style={styles.map}
-              initialRegion={this.state.region}
+              region={this.state.region}
               mapType={this.state.mapType}
               showsMyLocationButton={true}
               showsUserLocation={true}
@@ -62,7 +66,10 @@ class Home extends Component {
                   </Marker>
                   )
                   })}
-            </MapView> */}
+            </MapView>
+            
+            
+
             <ScrollView
               horizontal
               scrollEventThrottle={1}

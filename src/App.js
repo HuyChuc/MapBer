@@ -10,6 +10,9 @@ import BlankPage from "./container/BlankPageContainer";
 import RealEstateInformationContainer from './container/RealEstateInformationContainer';
 import RealEstateList from './stories/screens/RealEstate/RealEstateList/RealEstateList';
 import RealEstateDetail from './stories/screens/RealEstateInformation/RealEstateDetail/RealEstateDetail';
+import RealEstateNewsDetail from './stories/screens/RealEstateNews/RealEstateNewsDetail/RealEstateNewsDetail';
+import RealEstateConsultantDetail from './stories/screens/RealEstateConsultant/RealEstateConsultantDetail/RealEstateConsultantDetail';
+import RealEstateProjectDetail from './stories/screens/RealEstateProject/RealEstateProjectDetail/RealEstateProjectDetail';
 import RealEstateProjectContainer from './container/RealEstateProjectContainer';
 import MyRealEstateView from './stories/screens/MyRealEstate/MyRealEstateView/MyRealEstateView';
 import RealEstateNewsContainer from './container/RealEstateNewsContainer';
@@ -40,7 +43,11 @@ const AppLogin = createStackNavigator(
 		RealEstateConsultant: { screen: RealEstateConsultantContainer },
 		Settings: { screen: SettingsContainer },
 		Drawer: { screen: Drawer },
-		RealEstateDetail: { screen: RealEstateDetail }
+		RealEstateDetail: { screen: RealEstateDetail },
+		RealEstateNewsDetail: { screen: RealEstateNewsDetail },
+		RealEstateConsultantDetail: { screen: RealEstateConsultantDetail },
+		RealEstateProjectDetail: { screen: RealEstateProjectDetail }
+		// TabScreens: {screen: TabScreens}
 	},
 	{
 		initialRouteName: "Drawer",

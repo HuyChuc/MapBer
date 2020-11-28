@@ -4,30 +4,28 @@ const styles = StyleSheet.create({
     flatlistContainer: {
         flex: 1,
     },
-    itemContainer: {
+    container: {
         width: '100%',
         padding: 15,
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    leftContent: {
-        width: '30%',
-    },
-    rightContent: {
-        width: '65%',
+    content: {
+        width: '100%',
     },
     imgContent: {
         width: '100%',
-        height: 50,
-        alignSelf: 'center'
+        height: 150,
+        alignSelf: 'center',
+        margin: 10,
+
     },
     infoContainer: {
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 10,
-        justifyContent: "space-around"
+        marginTop: 10
     },
     labelText: {
         fontWeight: '600',
@@ -35,6 +33,14 @@ const styles = StyleSheet.create({
     },
     valueText: {
         fontSize: 14
+    },
+    title: {
+        fontWeight: "bold"
+    },
+    publish_date: {
+        fontStyle: "italic",    
+        textDecorationStyle: "solid",
+        color: "#9ea2a8"
     }
 })
 
