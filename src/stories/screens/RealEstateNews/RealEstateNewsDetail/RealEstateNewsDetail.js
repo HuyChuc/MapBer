@@ -56,11 +56,11 @@ class RealEstateNewsDetail extends Component {
                     <Right />
                 </Header>
                 <Content style={styles.contentContainer}>
-                    <Text style={styles.titleText}>{detail.title}</Text>
+                    <Text style={styles.title}>{detail.title}</Text>
 
                     <View style={styles.sectionContainer}>
                         <Text style={styles.publishDate}>{Moment(detail.publisH_DATE).format('MM/DD/YYYY')}</Text>
-                        <Text>{detail.description}</Text>
+                        <Text style={styles.dest}>{detail.description}</Text>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.author}>{detail.author}</Text>
                         </View>

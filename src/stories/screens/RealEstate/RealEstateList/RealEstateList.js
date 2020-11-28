@@ -81,7 +81,8 @@ class RealEstateList extends Component {
                 style={{
                     height: 1,
                     width: "100%",
-                    backgroundColor: "#000",
+                    backgroundColor: "#632421",
+                    alignSelf: "center"
                 }}
             />
         );
