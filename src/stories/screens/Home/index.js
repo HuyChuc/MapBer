@@ -12,7 +12,7 @@ import {
   TextInput
 } from "native-base";
 import {View, Text,Animated,StyleSheet, TouchableOpacity,ScrollView} from 'react-native';
-import i18n from '../../../utils/i18n';
+import {i18nUtil} from '../../../utils/i18n';
 import styles from "./styles";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AnimatedDetail from './AnimatedDetail';
@@ -27,7 +27,7 @@ class Home extends Component {
           <Left/>
 
           <Body>
-            <Title>{i18n.t('home')}</Title>
+            <Title>{i18nUtil('vi').t('home')}</Title>
           </Body>
           <Right />
         </Header>
@@ -67,9 +67,7 @@ class Home extends Component {
                   )
                   })}
             </MapView>
-            
-            
-
+          
             <ScrollView
               horizontal
               scrollEventThrottle={1}
@@ -91,9 +89,21 @@ class Home extends Component {
                 onPress={()=> this.getBySelectCate(cat.id)}
                 >
                   <Text>{cat.title}</Text>
+                 
                 </TouchableOpacity>
               ))}
             </ScrollView>
+            <View style={styles.mapType} >
+                <TouchableOpacity style={{ backgroundColor: '#fff', opacity: 1, borderRadius: 10, width: 35, height: 35, justifyContent: 'center', alignItems: 'center', margin: 10 }}
+                  onPress={() => {
+                    this.setState({ filter: { title: 'Kiểu bản đồ', data: this.state.type }, showModalFilter: true, currentOperation: 'type' });
+                  }} >
+                  <Icon name="ios-book" color="#4F8EF7" />
+                </TouchableOpacity>
+                
+                
+
+            </View>
             <AnimatedDetail listMaps={this.state.listMaps} />
             
         

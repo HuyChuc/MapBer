@@ -35,6 +35,11 @@ const styles: any = StyleSheet.create({
 		top:Platform.OS === 'ios' ? 50 : 40, 
 		paddingHorizontal:10
 	},
+	mapType:{
+		position:'absolute', 
+		top:Platform.OS === 'ios' ? 80 : 70, 
+		right : 10, 
+	},
 	chipsItem: {
 		flexDirection:"row",
 		backgroundColor:'#fff', 
