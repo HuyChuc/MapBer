@@ -12,6 +12,7 @@ export async function getCategoryList() {
 
 // get danh sách bất động sản theo loại bất động sản
 export async function getListProperty(pageSize, pageIndex, propertyType) {
+    console.log('property type id: ', propertyType);
     const urlRequest = baseApiUrl +
     'realstates/GetRealEstates?LanguageId=1&PageSize=' +
     encodeURIComponent(pageSize) + '&PageIndex=' +
@@ -22,6 +23,17 @@ export async function getListProperty(pageSize, pageIndex, propertyType) {
     });
     const responseJson = await response.json();
     console.log('propertyList: ', responseJson);
+    return responseJson;
+}
+
+// get chi tiết thông tin bất động sản
+export async function getDetail(id) {
+    const urlRequest = baseApiUrl + 'realstates/GetRealEstatesById?LanguageId=1&Id=' + encodeURIComponent(id)
+    const response = await fetch(urlRequest, {
+        method: 'GET',
+    });
+    const responseJson = await response.json();
+    console.log('DETAIL: ', responseJson);
     return responseJson;
 }
 

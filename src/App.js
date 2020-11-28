@@ -8,6 +8,7 @@ import Login from "./container/LoginContainer";
 import Home from "./container/HomeContainer";
 import BlankPage from "./container/BlankPageContainer";
 import RealEstateInformationContainer from './container/RealEstateInformationContainer';
+import RealEstateDetail from './stories/screens/RealEstateInformation/RealEstateDetail/RealEstateDetail';
 import RealEstateProjectContainer from './container/RealEstateProjectContainer';
 import RealEstateNewsContainer from './container/RealEstateNewsContainer';
 import RealEstateConsultantContainer from './container/RealEstateConsultantContainer';
@@ -51,6 +52,7 @@ const AppLogin = createStackNavigator(
 		RealEstateConsultant: { screen: RealEstateConsultantContainer },
 		Settings: { screen: SettingsContainer },
 		Drawer: { screen: Drawer },
+		RealEstateDetail: { screen: RealEstateDetail }
 		// TabScreens: {screen: TabScreens}
 	},
 	{

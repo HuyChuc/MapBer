@@ -55,7 +55,7 @@ class RealEstateInformation extends Component {
                     {categoryList.map(item => {
                         return (
                             <Tab key={item.id} heading={item.name}>
-                                <RealEstateInforByType item={item} propertyTypeId={item.id}/>
+                                <RealEstateInforByType item={item} propertyTypeId={item.id} parent={parent}/>
                             </Tab>
                         )
                     })}
