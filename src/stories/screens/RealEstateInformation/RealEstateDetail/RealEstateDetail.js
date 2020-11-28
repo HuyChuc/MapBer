@@ -60,7 +60,7 @@ class RealEstateDetail extends Component {
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Giá tiền: </Text>
                             <Text>{detail.price !== null ? detail.price + ' ' + 
-                                                     detail.caT_UNIT_DETAIL_NAME : ""}</Text>
+                                                     detail.caT_UNIT_DETAIL_NAME : "Liên hệ"}</Text>
                         </View>
                         {detail.length !== '' && detail.width !== '' ?
                         <View style={styles.dataValueContainer}>

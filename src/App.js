@@ -73,6 +73,9 @@ const RealEstate = createStackNavigator(
 	{
 		DrawerRealEstate: {screen: DrawerRealEstate},
 		RealEstateDetail: { screen: RealEstateDetail },
+		RealEstateProjectDetail: { screen: RealEstateProjectDetail },
+		RealEstateNewsDetail: { screen: RealEstateNewsDetail },
+		RealEstateConsultantDetail: { screen: RealEstateConsultantDetail },
 		RealEstateInformation: { screen: RealEstateInformationContainer },
 		RealEstateProject: { screen: RealEstateProjectContainer },
 		RealEstateNews: { screen: RealEstateNewsContainer },
@@ -103,6 +106,9 @@ const MyRealEstate = createStackNavigator(
 	{
 		DrawerMyRealEstate: {screen: DrawerMyRealEstate},
 		RealEstateDetail: { screen: RealEstateDetail },
+		RealEstateProjectDetail: { screen: RealEstateProjectDetail },
+		RealEstateNewsDetail: { screen: RealEstateNewsDetail },
+		RealEstateConsultantDetail: { screen: RealEstateConsultantDetail },
 		RealEstateInformation: { screen: RealEstateInformationContainer },
 		RealEstateProject: { screen: RealEstateProjectContainer },
 		RealEstateNews: { screen: RealEstateNewsContainer },
