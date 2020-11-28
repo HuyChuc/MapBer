@@ -40,8 +40,11 @@ class Home extends Component {
             <MapView
               provider={PROVIDER_GOOGLE} // remove if not using Google Maps
               style={styles.map}
-              region={this.state.region}
+              initialRegion={this.state.region}
               mapType={this.state.mapType}
+              showsMyLocationButton={true}
+              showsUserLocation={true}
+             
 
             >
                 {this.state.listMaps.map((item,index) => {
@@ -49,8 +52,11 @@ class Home extends Component {
                   <Marker
                     key={index}
                     coordinate={item.marker}
+                    title={item.name}
+                    description={item.owner}
                     
                   >
+                   
                     <Animated.View style={[styles.markerWrap]}>
                       <Animated.Image
                        source={{
@@ -83,7 +89,7 @@ class Home extends Component {
             >
               {this.state.category.map((cat, index) => (
                 <TouchableOpacity key={index} style={styles.chipsItem} 
-                  
+                onPress={()=> this.getBySelectCate(cat.id)}
                 >
                  <Ionicons name="home-outline" style={styles.chipsIcon} size={18} />
                   <Text>{cat.title}</Text>

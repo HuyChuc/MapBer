@@ -22,6 +22,7 @@ class HomeContainer extends Home {
 			selectedCategory: '',
 			selectedExchange: '',
 			selectedCountry: '',
+			amount: 99,
         }
     }
 	componentDidMount() {
@@ -32,11 +33,42 @@ class HomeContainer extends Home {
     }
 
     componentWillUnmount() {
-       
+		
 	}
-
+	onRegionChange = (region) =>{
+		this.setState({ region : region});
+	}
+	getBySelectCate = (id) =>{
+		this.setState({selectedCategory : id})
+		this.getMakers();
+	}
+	// get makers
+	getMakers = async () => {
+        const urlRequest = 'http://mapber.com:51800/api/realstates/GetRealEstates?LanguageId=1&PageSize=50&PageIndex=0&Latitude='+this.state.region.latitude+'&Longitude='+this.state.region.longitude+'&Radius=100&RealEstateTypeId=' +this.state.selectedCategory+ '&RealEstateExchangeId=&CountryId='
+        const response = await fetch(urlRequest, {
+            method: 'GET',
+		});
+		const markersArr = [];
+		const responseJson = await response.json();
+		responseJson.map((element, idx) => {
+			const marketObj = {};
+			marketObj.id = element.id;
+			marketObj.name = element.title;
+			marketObj.icon = element.icons;
+			marketObj.rating = element.rating;
+			marketObj.vicinity = element.vicinity;
+			marketObj.owner = element.fulL_NAME;
+			marketObj.marker = {
+			  latitude: parseFloat(element.latitude),
+			  longitude: parseFloat(element.longitude)
+			};
+			markersArr.push(marketObj);
+		  });
+        this.setState({listMaps: markersArr});
+	}
+	// get categoty
 	async getCategory(){   
-		const urlRequest = 'http://mapber.com:51800/api/category/GetCatRealEstatesType?LanguageId=1&PageSize=9999'
+		const urlRequest = baseApiUrl + 'category/GetCatRealEstatesType?LanguageId=1&PageSize=9999'
         const res = await fetch(urlRequest, {
             method: 'GET',
 		});
@@ -44,6 +76,7 @@ class HomeContainer extends Home {
 		let cat = categories.map(function(item) {
 		  return { title: item.name, id: item.id };
 		});
+		cat.unshift({title : 'Tất cả', id : ''})
 		this.setState({ category: cat });
 	}
 
@@ -60,40 +93,15 @@ class HomeContainer extends Home {
 	
 	async getCurrentLocation() {
 		navigator.geolocation.getCurrentPosition(position => {
-		  let region = {
-			latitude: position.coords.latitude,
-			longitude: position.coords.longitude,
-			latitudeDelta: 0.015,
-			longitudeDelta: 0.0121,
-		  }
-	
-		  this.setState({ region: region });
-		});
-	  }
-
-	getMakers = async () => {
-        const urlRequest = 'http://mapber.com:51800/api/realstates/GetRealEstates?LanguageId=1&PageSize=50&PageIndex=0&Latitude=&Longitude=&Radius=100&RealEstateTypeId=' +this.state.selectedCategory+ '&RealEstateExchangeId=&CountryId='
-        const response = await fetch(urlRequest, {
-            method: 'GET',
-		});
-		const markersArr = [];
-		const responseJson = await response.json();
-		responseJson.map((element, idx) => {
-			const marketObj = {};
-			marketObj.id = element.id;
-			marketObj.name = element.title;
-			marketObj.icon = element.icons;
-			marketObj.rating = element.rating;
-			marketObj.vicinity = element.vicinity;
-			marketObj.marker = {
-			  latitude: parseFloat(element.latitude),
-			  longitude: parseFloat(element.longitude)
-			};
-			markersArr.push(marketObj);
+			let region = {
+			  latitude: position.coords.latitude,
+			  longitude: position.coords.longitude,
+			  latitudeDelta: 0.015,
+			  longitudeDelta: 0.0121,
+			}
+			this.setState({ region: region });
 		  });
-        this.setState({listMaps: markersArr});
 	}
-	
 	//maps type
 
 	switchMapType = (type) => {
