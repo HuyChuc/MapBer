@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from "react";
-import {View, Text, FlatList, Image, ActivityIndicator} from 'react-native';
+import {View, Text, FlatList, Image, ActivityIndicator, TouchableOpacity} from 'react-native';
 import {Header, Container, Right, Left, Button, Body, Title} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons'
 import styles from './styles';
@@ -19,6 +19,7 @@ class RealEstateInforByType extends Component {
 
     getListProps = () => {
         const {pageIndex, pageSize} = this.state;
+        this.setState({propertyList: []});
         const {propertyTypeId} = this.props;
         console.log('propertyTypeId: ', propertyTypeId);
         getListProperty(pageSize, pageIndex, propertyTypeId)
@@ -28,8 +29,11 @@ class RealEstateInforByType extends Component {
     }
     
     renderItem = ({item, index}) => {
+        const {parent} = this.props;
         return (
-            <View style={styles.itemContainer}>
+            <TouchableOpacity
+                onPress={() => parent.props.navigation.navigate('RealEstateDetail', {propertyId: item.id, propertyTitle: item.title})}
+                style={styles.itemContainer}>
                 <View style={styles.leftContent}>
                     {item.images !== null ?
                     <Image source={{uri: item.images}} style={styles.imgContent} resizeMode='cover' />
@@ -47,19 +51,12 @@ class RealEstateInforByType extends Component {
                         <Text style={styles.valueText}>{item.width * item.length} (m2)</Text>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 
     componentDidMount() {
-        this._mounted = true;
-        if (this._mounted) {
-            this.getListProps();
-        }
-    }
-
-    componentWillUnmount() {
-        this._mounted = false;
+        this.getListProps();
     }
 
     render() {
