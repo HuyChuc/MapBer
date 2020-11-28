@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {View, Text} from 'react-native';
 import {Header, Container, Right, Left, Button, Body, Title, Tabs, Tab, ScrollableTab} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
-import i18n from '../../../utils/i18n';
+import {i18nUtil} from '../../../utils/i18n';
 class Settings extends Component {
 	
     render() {
@@ -21,7 +21,7 @@ class Settings extends Component {
                         </Button>
                     </Left>
                     <View style={{justifyContent: 'center'}}>
-                        <Title>{i18n.t('Settings')}</Title>
+                        <Title>{i18nUtil('en').t('Settings')}</Title>
                     </View>
                     <Right />
                 </Header>

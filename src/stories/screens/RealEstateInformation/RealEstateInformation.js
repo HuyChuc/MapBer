@@ -5,6 +5,7 @@ import {Header, Container, Right, Left, Button, Body, Title, Tabs, Tab, Scrollab
 import Icon from 'react-native-vector-icons/Ionicons'
 import RealEstateInforByType from './RealEstateInforByType/RealEstateInforByType'
 import {getCategoryList} from './api';
+import {connect} from 'react-redux';
 class RealEstateInformation extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +15,8 @@ class RealEstateInformation extends Component {
     }
 
     getCatList = () => {
-        getCategoryList()
+        const {languageType} = this.props;
+        getCategoryList(languageType)
         .then(categoryList => {
             this.setState({categoryList})
         })
@@ -66,4 +68,8 @@ class RealEstateInformation extends Component {
     }
 }
 
-export default RealEstateInformation;
+const mapStateToProps = (state) => ({
+    languageType: state.language.languageType
+})
+
+export default connect(mapStateToProps)(RealEstateInformation);

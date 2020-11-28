@@ -11,33 +11,25 @@ import {
   Right,
 } from "native-base";
 import {View, Text,Animated,StyleSheet, TouchableOpacity,ScrollView} from 'react-native';
-import i18n from '../../../utils/i18n';
+import {i18nUtil} from '../../../utils/i18n';
 import styles from "./styles";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AnimatedDetail from './AnimatedDetail';
-
 
 class Home extends Component {
   render() {
     return (
       <Container style={styles.container}>
         <Header>
-          <Left>
-            <Button transparent>
-              <Icon
-                active
-                name="menu"
-                onPress={() => this.props.navigation.openDrawer()}
-              />
-            </Button>
-          </Left>
+          <Left/>
           <Body>
-            <Title>{i18n.t('home')}</Title>
+            <Title>{i18nUtil('vi').t('map')}</Title>
+            {/* <Title>{i18n.use()}</Title> */}
           </Body>
           <Right />
         </Header>
           <View style={styles.container}>
-            <MapView
+            {/* <MapView
               provider={PROVIDER_GOOGLE} // remove if not using Google Maps
               style={styles.map}
               initialRegion={this.state.region}
@@ -70,7 +62,7 @@ class Home extends Component {
                   </Marker>
                   )
                   })}
-            </MapView>
+            </MapView> */}
             <ScrollView
               horizontal
               scrollEventThrottle={1}

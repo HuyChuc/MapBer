@@ -3,30 +3,8 @@ import { Container, List, ListItem, Content, Button, Segment } from "native-base
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { NavigationActions, StackActions } from "react-navigation";
 import Icon from 'react-native-vector-icons/AntDesign';
-import i18n from '../../../utils/i18n';
+import {i18nUtil} from '../../../utils/i18n';
 import styles from './styles';
-const routes = [
-	{
-		route: "RealEstateInformation",
-		caption: i18n.t('reale_state_infor'),
-	},
-	{
-		route: "RealEstateProject",
-		caption: i18n.t('reale_state_project'),
-	},
-	{
-		route: "RealEstateConsultant",
-		caption: i18n.t('reale_state_consultant'),
-	},
-	{
-		route: "RealEstateNews",
-		caption: i18n.t('reale_state_news'),
-	},
-	{
-		route: "Settings",
-		caption: i18n.t('Settings'),
-	}
-];
 const defaultAvatar = require('../../../../assets/contact-icon.png');
 export interface Props {
 	navigation: any,
@@ -37,7 +15,42 @@ const resetAction = StackActions.reset({
 	actions: [NavigationActions.navigate({ routeName: "Login" })],
 });
 export default class Sidebar extends React.Component<Props, State> {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			languageType: 'vi',
+			routes: [
+				{
+					route: "RealEstateInformation",
+					caption: i18nUtil('vi').t('reale_state_infor'),
+				},
+				{
+					route: "RealEstateProject",
+					caption: i18nUtil('vi').t('reale_state_project'),
+				},
+				{
+					route: "RealEstateConsultant",
+					caption: i18nUtil('vi').t('reale_state_consultant'),
+				},
+				{
+					route: "RealEstateNews",
+					caption: i18nUtil('vi').t('reale_state_news'),
+				},
+				{
+					route: "Settings",
+					caption: i18nUtil('vi').t('Settings'),
+				}
+			]
+		}
+	}
+
+	componentDidMount() {
+		i18nUtil('en');
+	}
+
 	render() {
+		const {routes} = this.state;
 		return (
 			<Container>
 				<View style={styles.avatarContainer}>
@@ -64,11 +77,13 @@ export default class Sidebar extends React.Component<Props, State> {
 					/>
 					<View style={styles.segmentContainer}>
 						<Segment style={styles.segmentStyles}>
-							<Button first active>
-								<Text style={styles.segmentText}>{i18n.t('english')}</Text>
+							<Button
+								onPress={() => i18nUtil('en')}
+								first active>
+								<Text style={styles.segmentText}>{i18nUtil('vi').t('english')}</Text>
 							</Button>
-							<Button>
-								<Text>{i18n.t('vietnamese')}</Text>
+							<Button onPress={() => i18nUtil('vi')}>
+								<Text>{i18nUtil('vi').t('vietnamese')}</Text>
 							</Button>
 						</Segment>
 					</View>
@@ -76,7 +91,7 @@ export default class Sidebar extends React.Component<Props, State> {
 					<TouchableOpacity style={styles.logoutContainer}>
 						<Icon name='logout' size={30} />
 						<View style={styles.buttonLogoutStyle}>
-							<Text>{i18n.t('logout')}</Text>
+							<Text>{i18nUtil('vi').t('logout')}</Text>
 						</View>
 					</TouchableOpacity>
 				</Content>
