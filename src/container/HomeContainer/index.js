@@ -53,11 +53,14 @@ class HomeContainer extends Home {
 		responseJson.map((element, idx) => {
 			const marketObj = {};
 			marketObj.id = element.id;
-			marketObj.name = element.title;
+			marketObj.title = element.title;
 			marketObj.icon = element.icons;
 			marketObj.rating = element.rating;
 			marketObj.vicinity = element.vicinity;
 			marketObj.owner = element.fulL_NAME;
+			marketObj.image = element.images;
+			marketObj.starRate = element.iS_STAR;
+			marketObj.reviews = element.policY_CONTENT;
 			marketObj.marker = {
 			  latitude: parseFloat(element.latitude),
 			  longitude: parseFloat(element.longitude)

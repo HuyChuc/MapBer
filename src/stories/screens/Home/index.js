@@ -14,7 +14,7 @@ import {View, Text,Animated,StyleSheet, TouchableOpacity,ScrollView} from 'react
 import i18n from '../../../utils/i18n';
 import styles from "./styles";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import AnimatedDetail from './AnimatedDetail';
 
 
 class Home extends Component {
@@ -52,7 +52,7 @@ class Home extends Component {
                   <Marker
                     key={index}
                     coordinate={item.marker}
-                    title={item.name}
+                    title={item.title}
                     description={item.owner}
                     
                   >
@@ -91,11 +91,12 @@ class Home extends Component {
                 <TouchableOpacity key={index} style={styles.chipsItem} 
                 onPress={()=> this.getBySelectCate(cat.id)}
                 >
-                 <Ionicons name="home-outline" style={styles.chipsIcon} size={18} />
                   <Text>{cat.title}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>
+            <AnimatedDetail listMaps={this.state.listMaps} />
+            
         
           </View>
         
