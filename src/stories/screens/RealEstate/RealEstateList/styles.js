@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     infoContainer: {
         width: '100%',
         flexDirection: 'row',
-        alignItems: 'center',
     },
     labelText: {
         fontWeight: '600',

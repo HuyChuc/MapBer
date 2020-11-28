@@ -54,7 +54,7 @@ class RealEstateProjectDetail extends Component {
                     <Right />
                 </Header>
                 <Content style={styles.contentContainer}>
-                    <Text>{propertyTitle}</Text>
+                    <Text>{detail.title}</Text>
                     <View style={styles.sectionContainer}>
                         <Text style={styles.titleText}>Thông tin bất động sản</Text>
                         <View style={styles.dataValueContainer}>

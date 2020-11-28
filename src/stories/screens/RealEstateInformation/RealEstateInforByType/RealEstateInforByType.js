@@ -5,7 +5,7 @@ import {Header, Container, Right, Left, Button, Body, Title} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons'
 import styles from './styles';
 import {getListProperty} from '../api';
-
+import Moment from 'moment';
 const defaultImg = require('../../../../../assets/contact-icon.png');
 class RealEstateInforByType extends Component {
     constructor(props) {

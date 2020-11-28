@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
     titleText: {
         fontWeight: '600',
         fontSize: 18,
+    },
+    title: {
+        color: "#165fcc",
+        fontWeight: "bold",
+        fontSize: 18,
+        margin: 5
     }
 })
 

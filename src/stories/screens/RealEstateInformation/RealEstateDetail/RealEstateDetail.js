@@ -54,12 +54,13 @@ class RealEstateDetail extends Component {
                     <Right />
                 </Header>
                 <Content style={styles.contentContainer}>
-                    <Text>{propertyTitle}</Text>
+                    <Text style={styles.title}>{detail.title}</Text>
                     <View style={styles.sectionContainer}>
                         <Text style={styles.titleText}>Thông tin bất động sản</Text>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Giá tiền: </Text>
-                            <Text>Liên hệ</Text>
+                            <Text>{detail.price !== null ? detail.price + ' ' + 
+                                                     detail.caT_UNIT_DETAIL_NAME : ""}</Text>
                         </View>
                         {detail.length !== '' && detail.width !== '' ?
                         <View style={styles.dataValueContainer}>
