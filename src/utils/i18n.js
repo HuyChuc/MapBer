@@ -4,26 +4,28 @@ import localesResourse from "../../assets/locales";
 import {NativeModules} from 'react-native';
 import DeviceInfo from "react-native-device-info";
 
-const languageDetector = {
-  type: "languageDetector",
-  detect: () => 'en',
-  init: () => {},
-  cacheUserLanguage: () => {}
-};
-
-i18n
-  .use(reactI18nextModule)
-  .use(languageDetector)
-  .init({
-    resources: localesResourse,
-    fallbackLng: "vi",
-    debug: true,
-    interpolation: {
-      escapeValue: false
-    },
-    react: {
-      wait: true
-    }
-  });
-
-export default i18n;
+export function i18nUtil(languageType) {
+  const languageDetector = {
+    type: "languageDetector",
+    detect: () => languageType,
+    init: () => {},
+    cacheUserLanguage: () => {}
+  };
+  
+  i18n
+    .use(reactI18nextModule)
+    .use(languageDetector)
+    .init({
+      resources: localesResourse,
+      fallbackLng: "vi",
+      debug: true,
+      interpolation: {
+        escapeValue: false
+      },
+      react: {
+        wait: true
+      }
+    });
+  
+    return i18n;
+}
