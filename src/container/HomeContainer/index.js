@@ -2,6 +2,10 @@
 import React, {Component} from "react";
 import Home from "../../stories/screens/Home";
 import {baseApiUrl} from '../../config/baseApiUrl';
+import { connect } from 'react-redux';
+import Geolocation from '@react-native-community/geolocation';
+import {request, PERMISSIONS} from 'react-native-permissions';
+import { Platform } from "react-native";
 
 class HomeContainer extends Home {
 	constructor(props) {
@@ -26,7 +30,7 @@ class HomeContainer extends Home {
         }
     }
 	componentDidMount() {
-		this.getCurrentLocation();
+		this.requestLocationPermission();
 		this.getMakers();
 		this.getCategory();
 		
@@ -39,6 +43,7 @@ class HomeContainer extends Home {
 		this.setState({ region : region});
 	}
 	getBySelectCate = (id) =>{
+		
 		this.setState({selectedCategory : id})
 		this.getMakers();
 	}
@@ -48,6 +53,7 @@ class HomeContainer extends Home {
         const response = await fetch(urlRequest, {
             method: 'GET',
 		});
+		console.log('-----has response---------' + response);
 		const markersArr = [];
 		const responseJson = await response.json();
 		responseJson.map((element, idx) => {
@@ -67,7 +73,7 @@ class HomeContainer extends Home {
 			};
 			markersArr.push(marketObj);
 		  });
-        this.setState({listMaps: markersArr});
+		  await this.setState({listMaps: markersArr});
 	}
 	// get categoty
 	async getCategory(){   
@@ -93,17 +99,34 @@ class HomeContainer extends Home {
 		}
 		this.mapView.animateCamera(camera);
 	  }
-	
-	async getCurrentLocation() {
-		navigator.geolocation.getCurrentPosition(position => {
-			let region = {
-			  latitude: position.coords.latitude,
-			  longitude: position.coords.longitude,
-			  latitudeDelta: 0.015,
-			  longitudeDelta: 0.0121,
+	requestLocationPermission = async() =>{
+		if(Platform.OS === 'ios'){
+			var response = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+			if(response === 'granted'){
+				this.getCurrentLocation();
 			}
-			this.setState({ region: region });
-		  });
+		}else{
+			var response = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+			if(response === 'granted'){
+				this.getCurrentLocation();
+			}
+		}
+	}
+
+
+	getCurrentLocation = () => {
+		Geolocation.getCurrentPosition(
+			position =>{
+				console.log(JSON.stringify(position))
+				let region = {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude,
+					latitudeDelta: 0.015,
+					longitudeDelta: 0.0121,
+				  }
+				  this.setState({ region: region });
+			}
+			)
 	}
 	//maps type
 
@@ -111,4 +134,5 @@ class HomeContainer extends Home {
 		this.setState({ mapType: type });
 	  }
 }
+
 export default (HomeContainer);
