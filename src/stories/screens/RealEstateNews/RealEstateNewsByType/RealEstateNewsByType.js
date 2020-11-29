@@ -28,7 +28,7 @@ class RealEstateNewsByType extends Component {
   }
 
   renderItem = ({ item }) => {
-    const {parent} = this.props;
+    const { parent } = this.props;
     return (
       <TouchableOpacity
         onPress={() => parent.props.navigation.navigate('RealEstateNewsDetail', { pid: item.id, ptitle: item.title })}
@@ -94,8 +94,9 @@ class RealEstateNewsByType extends Component {
       <View
         style={{
           height: 1,
-          width: "100%",
-          backgroundColor: "#000",
+          width: "90%",
+          backgroundColor: "#632421",
+          alignSelf: "center"
         }}
       />
     );

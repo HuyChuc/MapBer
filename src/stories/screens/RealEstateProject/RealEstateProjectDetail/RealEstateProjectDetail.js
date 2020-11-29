@@ -54,94 +54,94 @@ class RealEstateProjectDetail extends Component {
                     <Right />
                 </Header>
                 <Content style={styles.contentContainer}>
-                    <Text>{propertyTitle}</Text>
+                    <Text style={styles.title}>{detail.title}</Text>
                     <View style={styles.sectionContainer}>
                         <Text style={styles.titleText}>Thông tin bất động sản</Text>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Giá tiền: </Text>
-                            <Text>Liên hệ</Text>
+                            <Text style={styles.labelValue}>{detail.price !== null ? detail.price + ' ' +
+                            detail.caT_UNIT_DETAIL_NAME : 'Liên hệ'}</Text>
                         </View>
                         {detail.length !== '' && detail.width !== '' ?
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Diện tích: </Text>
-                            <Text>{detail.width * detail.length} (m2)</Text>
+                            <Text style={styles.labelValue}>{detail.width * detail.length} (m2)</Text>
                         </View>
                         : null
                         }
                         {detail.length !== '' ?
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Chiều dài: </Text>
-                            <Text>{detail.length} (m2)</Text>
+                            <Text style={styles.labelValue}>{detail.length} (m2)</Text>
                         </View>
                         : null
                         }
                         {detail.width !== '' ?
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Chiều rộng: </Text>
-                            <Text>{detail.length} (m2)</Text>
+                            <Text style={styles.labelValue}>{detail.length} (m2)</Text>
                         </View>
                         : null
                         }
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Hướng nhà, hướng đất: </Text>
-                            <Text>{detail.caT_DIRECTION_NAME}</Text>
+                            <Text style={styles.labelValue}>{detail.caT_DIRECTION_NAME}</Text>
                         </View>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Loại bất động sản: </Text>
-                            <Text>{detail.caT_REAL_ESTATES_TYPE_NAME}</Text>
+                            <Text style={styles.labelValue}>{detail.caT_REAL_ESTATES_TYPE_NAME}</Text>
                         </View>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Hình thức giao dịch: </Text>
-                            <Text>{detail.caT_REAL_ESTATES_EXCHANGE_NAME}</Text>
+                            <Text style={styles.labelValue}>{detail.caT_REAL_ESTATES_EXCHANGE_NAME}</Text>
                         </View>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Hình thức giao dịch: </Text>
                             {detail.approvE_USER === null ?
-                            <Text>Chưa kiểm duyệt</Text>
-                            : <Text>Đã kiểm duyệt</Text>
+                            <Text style={styles.labelValue}>Chưa kiểm duyệt</Text>
+                            : <Text style={styles.labelValue}>Đã kiểm duyệt</Text>
                             }
                         </View>
                     </View>
-                    <View style={[styles.sectionContainer, {marginTop: 30}]}>
+                    <View style={[styles.sectionContainer]}>
                         <Text style={styles.titleText}>Vị trí bất động sản</Text>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Địa chỉ: </Text>
-                            <Text>{detail.address}</Text>
+                            <Text style={styles.labelValue}>{detail.address}</Text>
                         </View>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Địa bàn: </Text>
-                            <Text>{detail.locality}</Text>
+                            <Text style={styles.labelValue}>{detail.locality}</Text>
                         </View>
                     </View>
-                    <View style={[styles.sectionContainer, {marginTop: 30}]}>
+                    <View style={[styles.sectionContainer]}>
                         <Text style={styles.titleText}>Mô tả bất động sản</Text>
                         <View style={styles.dataValueContainer}>
                             <Text>{detail.description}</Text>
                         </View>
                     </View>
-                    <View style={[styles.sectionContainer, {marginTop: 30}]}>
+                    <View style={[styles.sectionContainer]}>
                         <Text style={styles.titleText}>Thông tin pháp lý</Text>
                         <View style={styles.dataValueContainer}>
-                            <Text style={styles.labelText}>Thông tin pháp lý: </Text>
-                            <Text>{detail.legaL_INFORMATION}</Text>
+                            <Text style={styles.labelValue}>{detail.legaL_INFORMATION}</Text>
                         </View>
                     </View>
-                    <View style={[styles.sectionContainer, {marginTop: 30}]}>
+                    <View style={[styles.sectionContainer]}>
                         <Text style={styles.titleText}>Thông tin liên hệ</Text>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Họ tên: </Text>
-                            <Text>{detail.fulL_NAME}</Text>
+                            <Text style={styles.labelValue}>{detail.fulL_NAME}</Text>
                         </View>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Email: </Text>
-                            <Text>{detail.email}</Text>
+                            <Text style={styles.labelValue}>{detail.email}</Text>
                         </View>
                         <View style={styles.dataValueContainer}>
                             <Text style={styles.labelText}>Điện thoại: </Text>
-                            <Text>{detail.tel}</Text>
+                            <Text style={styles.labelValue}>{detail.tel}</Text>
                         </View>
                     </View>
-                    <View style={[styles.sectionContainer, {marginTop: 30}]}>
+                    <View style={[styles.sectionContainer]}>
                         <Text style={styles.titleText}>Ảnh giới thiệu</Text>
                         <View style={[styles.dataValueContainer, {justifyContent: 'center'}]}>
                             <Image source={{uri: detail.images}} style={{width: '90%', height: 500, resizeMode: 'cover'}} />

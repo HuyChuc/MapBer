@@ -6,10 +6,11 @@ const styles = StyleSheet.create({
     },
     itemContainer: {
         width: '100%',
-        padding: 15,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingTop: 5, 
+        paddingBottom: 5
     },
     leftContent: {
         width: '30%',
@@ -18,23 +19,32 @@ const styles = StyleSheet.create({
         width: '65%',
     },
     imgContent: {
+        marginLeft: 5,
         width: '100%',
-        height: 50,
+        height: 120,
         alignSelf: 'center'
     },
     infoContainer: {
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 10,
-        justifyContent: "space-around"
     },
     labelText: {
         fontWeight: '600',
         fontSize: 14
     },
     valueText: {
+        fontWeight: "normal",
         fontSize: 14
+    },
+    approveDate: {
+        paddingTop: 2,
+        marginTop: 2,
+        color: "#9ea2a8"
+    },
+    title: {
+        color: "#165fcc",
+        fontWeight: "bold"
     }
 })
 

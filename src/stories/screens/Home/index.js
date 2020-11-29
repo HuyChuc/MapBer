@@ -66,9 +66,7 @@ class Home extends Component {
                   )
                   })}
             </MapView>
-            
-            
-
+          
             <ScrollView
               horizontal
               scrollEventThrottle={1}
@@ -90,9 +88,21 @@ class Home extends Component {
                 onPress={()=> this.getBySelectCate(cat.id)}
                 >
                   <Text>{cat.title}</Text>
+                 
                 </TouchableOpacity>
               ))}
             </ScrollView>
+            <View style={styles.mapType} >
+                <TouchableOpacity style={{ backgroundColor: '#fff', opacity: 1, borderRadius: 10, width: 35, height: 35, justifyContent: 'center', alignItems: 'center', margin: 10 }}
+                  onPress={() => {
+                    this.setState({ filter: { title: 'Kiểu bản đồ', data: this.state.type }, showModalFilter: true, currentOperation: 'type' });
+                  }} >
+                  <Icon name="ios-book" color="#4F8EF7" />
+                </TouchableOpacity>
+                
+                
+
+            </View>
             <AnimatedDetail listMaps={this.state.listMaps} />
             
         

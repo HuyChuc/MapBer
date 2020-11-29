@@ -52,11 +52,10 @@ class HomeContainer extends Home {
 	}
 	// get makers
 	getMakers = async () => {
-        const urlRequest = 'http://mapber.com:51800/api/realstates/GetRealEstates?LanguageId=1&PageSize=50&PageIndex=0&Latitude='+this.state.region.latitude+'&Longitude='+this.state.region.longitude+'&Radius=100&RealEstateTypeId=' +this.state.selectedCategory+ '&RealEstateExchangeId=&CountryId='
+        const urlRequest = baseApiUrl + 'realstates/GetRealEstates?LanguageId=1&PageSize=50&PageIndex=0&Latitude='+this.state.region.latitude+'&Longitude='+this.state.region.longitude+'&Radius=100&RealEstateTypeId=' +this.state.selectedCategory+ '&RealEstateExchangeId=&CountryId='
         const response = await fetch(urlRequest, {
             method: 'GET',
 		});
-		console.log('-----has response---------' + response);
 		const markersArr = [];
 		const responseJson = await response.json();
 		responseJson.map((element, idx) => {

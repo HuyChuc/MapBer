@@ -3,10 +3,15 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
     contentContainer: {
         padding: 10,
+        backgroundColor: "#c5c9c9"
     },
     sectionContainer: {
         width: '100%',
-        justifyContent: "center"
+        margin: 5,
+        padding: 5,
+        backgroundColor: "#f0f5f5",
+        shadowColor: "#e8eaed",
+        shadowOpacity: 50,
     },
     dataValueContainer: {
         alignItems: 'flex-end',
@@ -17,10 +22,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     titleText: {
+        fontWeight: '600',
         fontSize: 18,
-        color: "red",
-        fontWeight: "bold",
-        paddingTop: 10
+        marginTop: 10,
+        color:"#632421"
     },
     publishDate: {
         paddingTop: 10,
@@ -30,6 +35,21 @@ const styles = StyleSheet.create({
     author: {
         paddingTop: 10,
         fontWeight: "bold"
+    },
+    dest: {
+        justifyContent: "space-between"
+    },
+    title: {
+        color: "#165fcc",
+        fontWeight: "bold",
+        fontSize: 18,
+        width: '100%',
+        margin: 5,
+        padding: 5,
+        backgroundColor: "#fff",
+        shadowColor: "#e8eaed",
+        shadowOpacity: 50,
+        textAlign: 'center',
     }
 })
 
