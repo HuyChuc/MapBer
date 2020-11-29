@@ -72,5 +72,10 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+
+	<key>NSIncludesSubdomains</key>
+	<true/>
+	<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+	<true/>
 </dict>
 </plist>

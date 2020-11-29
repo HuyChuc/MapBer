@@ -4,7 +4,7 @@ import Home from "../../stories/screens/Home";
 import {baseApiUrl} from '../../config/baseApiUrl';
 import { connect } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
-import {request, PERMISSIONS} from 'react-native-permissions';
+// import {request, PERMISSIONS} from 'react-native-permissions';
 import { Platform } from "react-native";
 
 class HomeContainer extends Home {
@@ -30,15 +30,18 @@ class HomeContainer extends Home {
         }
     }
 	componentDidMount() {
-		this.requestLocationPermission();
-		this.getMakers();
-		this.getCategory();
-		
+		this._mounted = true
+		if (this._mounted) {
+			this.getMakers();
+			this.getCategory();
+		}
+		// this.requestLocationPermission();
     }
 
     componentWillUnmount() {
-		
+		this._mounted = false;
 	}
+
 	onRegionChange = (region) =>{
 		this.setState({ region : region});
 	}
@@ -73,7 +76,7 @@ class HomeContainer extends Home {
 			};
 			markersArr.push(marketObj);
 		  });
-		  await this.setState({listMaps: markersArr});
+		  this.setState({listMaps: markersArr});
 	}
 	// get categoty
 	async getCategory(){   
@@ -99,19 +102,19 @@ class HomeContainer extends Home {
 		}
 		this.mapView.animateCamera(camera);
 	  }
-	requestLocationPermission = async() =>{
-		if(Platform.OS === 'ios'){
-			var response = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
-			if(response === 'granted'){
-				this.getCurrentLocation();
-			}
-		}else{
-			var response = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
-			if(response === 'granted'){
-				this.getCurrentLocation();
-			}
-		}
-	}
+	// requestLocationPermission = async() =>{
+	// 	if(Platform.OS === 'ios'){
+	// 		var response = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+	// 		if(response === 'granted'){
+	// 			this.getCurrentLocation();
+	// 		}
+	// 	}else{
+	// 		var response = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+	// 		if(response === 'granted'){
+	// 			this.getCurrentLocation();
+	// 		}
+	// 	}
+	// }
 
 
 	getCurrentLocation = () => {

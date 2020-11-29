@@ -12,7 +12,7 @@ import {
   TextInput
 } from "native-base";
 import {View, Text,Animated,StyleSheet, TouchableOpacity,ScrollView} from 'react-native';
-import i18n from '../../../utils/i18n';
+import {i18nUtil} from '../../../utils/i18n';
 import styles from "./styles";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AnimatedDetail from './AnimatedDetail';
@@ -27,7 +27,7 @@ class Home extends Component {
           <Left/>
 
           <Body>
-            <Title>{i18n.t('home')}</Title>
+            <Title>{i18nUtil('vi').t('home')}</Title>
           </Body>
           <Right />
         </Header>
@@ -57,7 +57,6 @@ class Home extends Component {
                       <Animated.Image
                        source={{
                         uri: item.icon,
-                        cache: 'only-if-cached'
                       }}
                         style={styles.marker}
                         resizeMode="cover"
