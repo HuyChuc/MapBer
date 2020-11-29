@@ -37,7 +37,7 @@ const styles: any = StyleSheet.create({
 	},
 	mapType:{
 		position:'absolute', 
-		top:Platform.OS === 'ios' ? 80 : 70, 
+		top:Platform.OS === 'ios' ? 120 : 100, 
 		right : 10, 
 	},
 	chipsItem: {

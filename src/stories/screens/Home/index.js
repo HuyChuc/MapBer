@@ -97,7 +97,7 @@ class Home extends Component {
                   onPress={() => {
                     this.setState({ filter: { title: 'Kiểu bản đồ', data: this.state.type }, showModalFilter: true, currentOperation: 'type' });
                   }} >
-                  <Icon name="ios-book" color="#4F8EF7" />
+                  <Icon name="layers-outline" color="#4F8EF7" />
                 </TouchableOpacity>
                 
                 
